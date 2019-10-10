@@ -12,7 +12,7 @@ from striprtf.striprtf import rtf_to_text
 
 
 con = fdb.connect(
-    host='localhost', database='/home/gabriel/Downloads/_BD/db1.FDB',
+    host='localhost', database='/home/gabriel/_BD/BD_ADVOGAR.FDB',
     user='sysdba', password='masterkey', charset='WIN1252'
   )
 
@@ -35,7 +35,7 @@ for c in data:
     c.insert(22, None)
     c.insert(22, None)
     c.insert(22, None)
-    #campo livrw 2 corresponde ao item "home page" do banco de dado 
+    #campo livre 2 corresponde ao item "home page" do banco de dado 
     if c[-1] != None: 
 #        c[-1] =c[-1].decode('windows-1252')
         c[-1] = rtf_to_text(c[-1])

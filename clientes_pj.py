@@ -12,12 +12,15 @@ from striprtf.striprtf import rtf_to_text
 
 
 con = fdb.connect(
-    host='localhost', database='/home/gabriel/Downloads/_BD/db1.FDB',
+    host='localhost', database='/home/gabriel/_BD/BD_ADVOGAR.FDB',
     user='sysdba', password='masterkey', charset='WIN1252'
   )
 
 pf_path = '/home/gabriel/Downloads/Modelo de Migração de Dados (Clientes - PJ).xls'
 pf = pd.read_excel(pf_path)
+
+
+
 
 sql= ''' 
 SELECT r.CON_NOME, r.CON_JURIDICA_NOMEFANTASIA, r.CON_CGC, r.CON_JURIDICA_CONTATO1, r.CON_JURIDICA_RAMOATIVIDADE, 

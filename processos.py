@@ -12,10 +12,12 @@ from striprtf.striprtf import rtf_to_text
 
 
 con = fdb.connect(
-    host='localhost', database='/home/gabriel/Downloads/_BD/db1.FDB',
+    host='localhost', database='/home/gabriel/_BD/BD_ADVOGAR.FDB',
     user='sysdba', password='masterkey', charset='WIN1252'
   )
   
+mapa= {'Administrativo':'DIREITO ADMINISTRATIVO','Ambiental':'DIREITO AMBIENTAL','Cível':'DIREITO CÍVEL','Criminal':'DIREITO PENAL', 'Família': 'DIREITO FAMÍLIA', 
+'Previdenciário':'DIREITO PREVIDENCIÁRIO', 'Trabalhista':'DIREITO DO TRABALHO', 'Tributário':'DIREITO TRIBUTÁRIO', 'JUIZADO': 'DIREITO CÍVEL', 'MARIA DA PENHA':'DIREITO PENAL'}
 
 #           ETL             #
 insert_outro = '''insert into ADV_CONTATO (CON_CODIGO
@@ -153,6 +155,7 @@ for c in data:
     pf = pf.append(s, ignore_index=True)
 
 pf.fillna(value=pd.np.nan, inplace=True)
+pf['ÁREA DE ATUAÇÃO'] = pf['ÁREA DE ATUAÇÃO'].map(mapa)
 #pf['DATA DA CONTRATAÇÃO'] = pf['DATA DA CONTRATAÇÃO'].astype('datetime64[ns]')
 #pf['DATA DA CONTRATAÇÃO'] = pf['DATA DA CONTRATAÇÃO'].dt.strftime('%d/%m/%Y')
 #pf['DATA ENCERRAMENTO'] = pf['DATA ENCERRAMENTO'].astype('datetime64[ns]')
